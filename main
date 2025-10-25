@@ -1,0 +1,72 @@
+print("The following program is a calorie tracker built to store meals and calorie intake.")
+
+meals = []
+calories = []
+meal_data = {}
+def total():
+    t=0
+    for i in calories:
+        t+=i
+    print(t)
+
+def entries():
+    inp = int(input("Number of entries to be done: "))
+    i = 0
+    while i < inp:
+        m = input(f"Enter meal name #{i+1}: ")
+        c = int(input(f"Enter calories for {m}: "))
+        meals.append(m)
+        calories.append(c)
+        i += 1  
+    
+    for i in range(len(meals)):
+        meal_data.update({meals[i]:calories[i]})
+
+def update():
+    print("you cannot update the meal name")
+    
+    for key in meal_data.keys():
+        print(key)
+        print()
+    inp=input("enter meal name for which calories are to be updated:")
+    inp1=int(input("enter updated calories:"))
+    meal_data.update({inp: inp1})
+def table():
+    print(f"Meal name      calories")
+    print("-"*20)
+    for key,value in meal_data.items():
+        print(f"{key}       {value}")
+        print()
+    print("-"*20)
+    total()
+
+def lim():
+    count=0
+    for i in calories:
+        count+=i
+    if count>limit:
+        print("more calories than limit")
+    else:
+        print("good going!!")
+def avg():
+    count=0
+    for i in calories():
+        count=+calories[i]
+    avg=count/(len(meals))
+    print(f"average calorie intake : {avg}")
+
+
+limit=int(input("enter daily limit: "))
+n=int(input(" type number for the function: enter data---1 // update data----2 // print table----3 // avg calorie intake---4 //"))
+
+if n==1:
+    entries()
+elif n==2:
+    update()
+elif n==3:
+    table()
+elif n==4:
+    avg()
+else:
+    print("try entering again")
+lim()
